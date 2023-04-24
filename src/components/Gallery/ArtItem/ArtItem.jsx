@@ -2,7 +2,6 @@ import React from 'react';
 import styles from './ArtItem.module.css';
 
 export function ArtItem(props) {
-  console.log(props.imageUrl);
   return (
     <div className={styles['image-container']}>
       <img 

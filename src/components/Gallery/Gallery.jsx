@@ -1,21 +1,20 @@
 import React, { useEffect } from 'react';
 import { Pagination } from 'fwt-internship-uikit';
 import { useDispatch, useSelector } from 'react-redux';
-import { requestPageItems, setCurrentPage } from '../../redux/reducer/Reducer';
+import { requestPageItems, setCurrentPage } from '../../redux/reducer/GalleryReducer';
 import { ArtItem } from './ArtItem';
 import styles from './Gallery.module.css';
 
 export function Gallery() {
 
-  const currentPage = useSelector ((store) => store.Reducer.currentPage);
+  const currentPage = useSelector ((store) => store.GalleryReducer.currentPage);
+  const paintings = useSelector (store => store.GalleryReducer.data);
   const dispatch = useDispatch();
-
   useEffect(() => {
     dispatch(requestPageItems(currentPage));
   }, [dispatch, currentPage]);
 
-  const paintings = useSelector (store => store.Reducer.data);
-  console.log(paintings);
+  // console.log(paintings);
   return (
     <div>
       <h1>Gallery</h1>

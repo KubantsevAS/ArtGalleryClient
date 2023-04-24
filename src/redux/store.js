@@ -1,9 +1,11 @@
-import { configureStore, combineReducers } from "@reduxjs/toolkit";
-import Reducer from "./reducer/Reducer";
+import { configureStore } from "@reduxjs/toolkit";
+import GalleryReducer from "./reducer/GalleryReducer";
+import ArtInfoReducer from "./reducer/ArtInfoReducer";
 
 const store = configureStore({
   reducer: {
-    Reducer,
+    GalleryReducer,
+    ArtInfoReducer,
   }
 })
 
