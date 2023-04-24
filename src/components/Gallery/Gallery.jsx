@@ -14,12 +14,12 @@ export function Gallery() {
     dispatch(requestPageItems(currentPage));
   }, [dispatch, currentPage]);
 
-  // console.log(paintings);
+  console.log(paintings);
   return (
     <div>
       <h1>Gallery</h1>
       {paintings && <div className={styles['image-container']}>
-        {paintings.map(elem => <ArtItem key={elem.id} {...elem}/>)}
+        {paintings && paintings.map(elem => <ArtItem key={elem.id} {...elem}/>)}
       </div>}
 
       <Pagination 

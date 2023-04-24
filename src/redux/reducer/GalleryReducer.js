@@ -1,4 +1,4 @@
-import { getGalleryData } from "../../api/api";
+import { getFiltredItems, getGalleryData } from "../../api/api";
 
 const LOAD_GALLERY = "LOAD_GALLERY";
 const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
@@ -47,10 +47,10 @@ export const requestPageItems = (page) => {
   }
 }
 
-export const requestFiltredItems = (name, authorId, locationId, rangeStart, rangeEnd) => {
-  return async (dispatch) => { 
-    let data = 0;
-    dispatch(setFilterItems(data));
+export const requestFiltredItems = (obj) => {
+  return async (dispatch) => {
+    let data = await getFiltredItems(obj);
+    dispatch(setFilterItems(data.data));
   }
 }
 
