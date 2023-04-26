@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { Range, Select, Input } from 'fwt-internship-uikit';
 import { requestArtInfo } from '../../redux/reducer/ArtInfoReducer';
-import styles from './FilterMenu.module.css'
+import './FilterMenu.scss'
 import { useDispatch, useSelector } from 'react-redux';
-import { requestFiltredItems } from '../../redux/reducer/GalleryReducer';
+import { setCurrentPage, setFilterItems } from '../../redux/reducer/GalleryReducer';
 
 export function FilterMenu() {
   
@@ -13,47 +13,54 @@ export function FilterMenu() {
 
   useEffect (() => {
     dispatch(requestArtInfo());
-  }, []);
+  }, [dispatch]);
 
+  const filter = useSelector (store => store.GalleryReducer.filter);
   const [name, setName] = useState('');
   const [author, setAuthor] = useState('');
-  const [authId, setAuthId] = useState();
   const [location, setLocation] = useState('');
 
   const handleInputName = (e) => {
     setName(e.target.value);
+    dispatch(setFilterItems({...filter, name: e.target.value}));
+    dispatch(setCurrentPage(1));
   }
-  
-  const sendObj = {
-    name: name,
-    authorId: authId
-  }
-  
+
   const handleAuthor = (e) => {
     setAuthor(e);
-    setAuthId(authors.reduce((objKey, elem) => elem.name === objKey ? elem.id : objKey, e));
-    dispatch(requestFiltredItems(sendObj))
+    const newId = authors.reduce((objKey, elem) => elem.name === objKey ? elem.id : objKey, e);
+    dispatch(setFilterItems({...filter, authorId: newId}));
+    dispatch(setCurrentPage(1));
   }
 
   const handleLocation = (e) => {
     setLocation(e);
+    const newId = locations.reduce((objKey, elem) => elem.location === objKey ? elem.id : objKey, e);
+    dispatch(setFilterItems({...filter, locationId: newId}));
+    dispatch(setCurrentPage(1));
   }
 
-  const clickTest = (obj) => {
-    dispatch(requestFiltredItems(obj));
+  const clickTest = () => {
+    dispatch(setFilterItems({name: '', locationId: '', authorId: ''}));
+    setAuthor('');
+    setLocation('');
   }
 
   return (
-    <div className={styles['menu']}>
-      <button onClick={() => clickTest({name: name, authorId: authId})}>PRESS</button>
+    <div>
+      <button onClick={() => clickTest()}>PRESS</button>
+    <div className={'menu'}>
+      
       <Input 
         value={name}
         onChange={handleInputName}
+        placeholder='Name'
       />
-      <Select 
+      <Select
         options={authors}
         value={author || "Author"}
         onChange={handleAuthor}
+        className={'Select'}
       />
       <Select
         options={locations.map(item => ({
@@ -62,9 +69,11 @@ export function FilterMenu() {
         }))}
         value={location || "Locations"}
         onChange={handleLocation}
+        className={'Select'}
       />
       <Range onClose={() => {}}
       />
+    </div>
     </div>
   )
 }

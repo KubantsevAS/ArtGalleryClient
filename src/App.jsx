@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import { FilterMenu, Gallery, Header } from './components';
 
 function App() {

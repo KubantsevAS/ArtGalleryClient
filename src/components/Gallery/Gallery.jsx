@@ -9,17 +9,21 @@ export function Gallery() {
 
   const currentPage = useSelector ((store) => store.GalleryReducer.currentPage);
   const paintings = useSelector (store => store.GalleryReducer.data);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(requestPageItems(currentPage));
-  }, [dispatch, currentPage]);
+  const filter = useSelector (store => store.GalleryReducer.filter);
 
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(requestPageItems({currentPage, name: filter.name, authorId: filter.authorId, locationId: filter.locationId}));
+  }, [currentPage, filter.name, filter.authorId, filter.locationId, dispatch]);
+
+  console.log(filter);
   console.log(paintings);
   return (
     <div>
       <h1>Gallery</h1>
       {paintings && <div className={styles['image-container']}>
-        {paintings && paintings.map(elem => <ArtItem key={elem.id} {...elem}/>)}
+        {paintings.map(elem => <ArtItem key={elem.id} {...elem}/>)}
       </div>}
 
       <Pagination 

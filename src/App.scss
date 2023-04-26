@@ -1,0 +1,18 @@
+@import 'styles/variables.scss';
+
+.App {
+  text-align: center;
+  padding: 35px 123px 97px;
+
+  @media ($smal_desktop) {
+    padding: 35px 42px 62px;
+  }
+
+  @media ($tablet) {
+    padding: 35px 34px 54px;
+  }
+
+  @media ($mobile) {
+    padding: 25px 20px 34px;
+  }
+}

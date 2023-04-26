@@ -1,4 +1,4 @@
-import { getFiltredItems, getGalleryData } from "../../api/api";
+import { getGalleryData } from "../../api/api";
 
 const LOAD_GALLERY = "LOAD_GALLERY";
 const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
@@ -6,6 +6,7 @@ const SET_FILTERS = "SET_FILTERS";
 
 const initialState = {
   data: [],
+  filter: {},
   currentPage: 1,
 }
 
@@ -24,7 +25,7 @@ function GalleryReducer(state = initialState, action) {
     case SET_FILTERS: 
       return {
         ...state,
-        data: action.payload,
+        filter: {...state.filter, ...action.payload},
       }
     default: 
       return state;
@@ -39,18 +40,12 @@ export const setGalleryItems = (items) => ({type: LOAD_GALLERY, payload: items})
 export const setFilterItems = (items) => ({type: SET_FILTERS, payload: items})
 
 // THUNK CREATORS
-export const requestPageItems = (page) => {
-  return async (dispatch) => { 
-    dispatch(setCurrentPage(page))
-    let data = await getGalleryData(page);
-    dispatch(setGalleryItems(data.data));
-  }
-}
 
-export const requestFiltredItems = (obj) => {
+export const requestPageItems = (obj) => {
   return async (dispatch) => {
-    let data = await getFiltredItems(obj);
-    dispatch(setFilterItems(data.data));
+    let data = await getGalleryData(obj);
+    dispatch(setGalleryItems(data.data));
+    dispatch(setFilterItems(data.filter));
   }
 }
 
