@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './ArtItem.module.css';
+import styles from './ArtItem.module.scss';
 
 export function ArtItem(props) {
   return (

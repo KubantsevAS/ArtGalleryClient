@@ -3,7 +3,8 @@ import { Pagination } from 'fwt-internship-uikit';
 import { useDispatch, useSelector } from 'react-redux';
 import { requestPageItems, setCurrentPage } from '../../redux/reducer/GalleryReducer';
 import { ArtItem } from './ArtItem';
-import styles from './Gallery.module.css';
+import '../../styles';
+import styles from './Gallery.module.scss';
 
 export function Gallery() {
 
@@ -18,10 +19,9 @@ export function Gallery() {
   }, [currentPage, filter.name, filter.authorId, filter.locationId, dispatch]);
 
   console.log(filter);
-  console.log(paintings);
+  // console.log(paintings);
   return (
     <div>
-      <h1>Gallery</h1>
       {paintings && <div className={styles['image-container']}>
         {paintings.map(elem => <ArtItem key={elem.id} {...elem}/>)}
       </div>}

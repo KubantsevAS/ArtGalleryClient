@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { Range, Select, Input } from 'fwt-internship-uikit';
+import { Range, Select, Input} from 'fwt-internship-uikit';
 import { requestArtInfo } from '../../redux/reducer/ArtInfoReducer';
-import './FilterMenu.scss'
+import styles from './FilterMenu.module.scss';
+import '../../styles';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentPage, setFilterItems } from '../../redux/reducer/GalleryReducer';
 
@@ -9,14 +10,14 @@ export function FilterMenu() {
   
   const locations = useSelector (store => store.ArtInfoReducer.locations);
   const authors = useSelector (store => store.ArtInfoReducer.authors);
+  const filter = useSelector (store => store.GalleryReducer.filter);
   const dispatch = useDispatch();
 
   useEffect (() => {
     dispatch(requestArtInfo());
   }, [dispatch]);
 
-  const filter = useSelector (store => store.GalleryReducer.filter);
-  const [name, setName] = useState('');
+  const [name, setName] = useState(filter.name);
   const [author, setAuthor] = useState('');
   const [location, setLocation] = useState('');
 
@@ -49,12 +50,13 @@ export function FilterMenu() {
   return (
     <div>
       <button onClick={() => clickTest()}>PRESS</button>
-    <div className={'menu'}>
+    <div className={styles['menu']}>
       
       <Input 
         value={name}
         onChange={handleInputName}
         placeholder='Name'
+        isDarkTheme={false}
       />
       <Select
         options={authors}
@@ -71,8 +73,11 @@ export function FilterMenu() {
         onChange={handleLocation}
         className={'Select'}
       />
-      <Range onClose={() => {}}
-      />
+      <Range onClose={() => {}} value="Created">
+        <input className={styles['range__input']} placeholder='from'></input>
+        <span  className={styles['dash']}/>
+        <input className={styles['range__input']} placeholder='before'></input>
+      </Range>
     </div>
     </div>
   )

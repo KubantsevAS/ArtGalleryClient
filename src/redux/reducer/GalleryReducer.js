@@ -6,7 +6,13 @@ const SET_FILTERS = "SET_FILTERS";
 
 const initialState = {
   data: [],
-  filter: {},
+  filter: {
+    name: '',
+    authorId: '',
+    locationId: '',
+    rangeStart: '',
+    rangeEnd: '',
+  },
   currentPage: 1,
 }
 
