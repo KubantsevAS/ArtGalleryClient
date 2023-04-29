@@ -1,10 +1,11 @@
 import './App.scss';
+import './styles';
 import { FilterMenu, Gallery, Header } from './components';
 
 function App() {
   return (
     <div className="App">
-      <Header className="App-header" />
+      <Header />
       <FilterMenu />
       <Gallery />
     </div>

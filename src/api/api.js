@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-export const BASE_URL = 'https://test-front.framework.team/paintings/?';
-export const AUTHORS_URL = 'https://test-front.framework.team/authors/';
-export const LOCATIONS_URL = 'https://test-front.framework.team/locations/';
+const BASE_URL = 'https://test-front.framework.team/paintings/?';
+const AUTHORS_URL = 'https://test-front.framework.team/authors/';
+const LOCATIONS_URL = 'https://test-front.framework.team/locations/';
 
 export const getArtInfo = async () => {
   const authors = await axios
@@ -31,6 +31,7 @@ export const getGalleryData = async ({currentPage = 1, name, authorId, locationI
       + (rangeStart ? '&created_gte=' + rangeStart : '')
       + (rangeEnd ? '&created_lte=' + rangeEnd :  ''))
     .then(response => {
+      console.log(response)
       return {
         data: response.data,
         filter: {name, authorId, locationId, rangeStart, rangeEnd},

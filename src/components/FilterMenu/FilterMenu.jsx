@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import { Range, Select, Input} from 'fwt-internship-uikit';
+import { useEffect } from 'react'
 import { requestArtInfo } from '../../redux/reducer/ArtInfoReducer';
 import styles from './FilterMenu.module.scss';
-import '../../styles';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentPage, setFilterItems } from '../../redux/reducer/GalleryReducer';
+import { InputField, RangeField, SelectField } from './FilterFields';
 
 export function FilterMenu() {
   
@@ -17,68 +16,47 @@ export function FilterMenu() {
     dispatch(requestArtInfo());
   }, [dispatch]);
 
-  const [name, setName] = useState(filter.name);
-  const [author, setAuthor] = useState('');
-  const [location, setLocation] = useState('');
-
-  const handleInputName = (e) => {
-    setName(e.target.value);
-    dispatch(setFilterItems({...filter, name: e.target.value}));
-    dispatch(setCurrentPage(1));
-  }
-
-  const handleAuthor = (e) => {
-    setAuthor(e);
-    const newId = authors.reduce((objKey, elem) => elem.name === objKey ? elem.id : objKey, e);
-    dispatch(setFilterItems({...filter, authorId: newId}));
-    dispatch(setCurrentPage(1));
-  }
-
-  const handleLocation = (e) => {
-    setLocation(e);
-    const newId = locations.reduce((objKey, elem) => elem.location === objKey ? elem.id : objKey, e);
-    dispatch(setFilterItems({...filter, locationId: newId}));
-    dispatch(setCurrentPage(1));
-  }
-
-  const clickTest = () => {
-    dispatch(setFilterItems({name: '', locationId: '', authorId: ''}));
-    setAuthor('');
-    setLocation('');
-  }
-
   return (
-    <div>
-      <button onClick={() => clickTest()}>PRESS</button>
     <div className={styles['menu']}>
-      
-      <Input 
-        value={name}
-        onChange={handleInputName}
-        placeholder='Name'
+
+      <InputField 
+        dispatch={dispatch}
+        setFilterItems={setFilterItems}
+        setCurrentPage={setCurrentPage}
+        filter={filter}
         isDarkTheme={false}
       />
-      <Select
+
+      <SelectField
         options={authors}
-        value={author || "Author"}
-        onChange={handleAuthor}
-        className={'Select'}
+        dispatch={dispatch}
+        setFilterItems={setFilterItems}
+        setCurrentPage={setCurrentPage}
+        filter={filter}
+        isDarkTheme={false}
+        placeholder={'Author'}
       />
-      <Select
+
+      <SelectField
         options={locations.map(item => ({
           ...item,
           name: item.location,
         }))}
-        value={location || "Locations"}
-        onChange={handleLocation}
-        className={'Select'}
+        dispatch={dispatch}
+        setFilterItems={setFilterItems}
+        setCurrentPage={setCurrentPage}
+        filter={filter} 
+        isDarkTheme={false}
+        placeholder={'Location'}
       />
-      <Range onClose={() => {}} value="Created">
-        <input className={styles['range__input']} placeholder='from'></input>
-        <span  className={styles['dash']}/>
-        <input className={styles['range__input']} placeholder='before'></input>
-      </Range>
-    </div>
+
+      <RangeField 
+        dispatch={dispatch}
+        setFilterItems={setFilterItems}
+        setCurrentPage={setCurrentPage}
+        filter={filter}
+        isDarkTheme={false}
+      />
     </div>
   )
 }

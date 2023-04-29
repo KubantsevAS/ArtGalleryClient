@@ -46,7 +46,6 @@ export const setGalleryItems = (items) => ({type: LOAD_GALLERY, payload: items})
 export const setFilterItems = (items) => ({type: SET_FILTERS, payload: items})
 
 // THUNK CREATORS
-
 export const requestPageItems = (obj) => {
   return async (dispatch) => {
     let data = await getGalleryData(obj);

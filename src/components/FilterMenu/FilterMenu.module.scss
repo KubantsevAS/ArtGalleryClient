@@ -12,30 +12,3 @@
     gap: 15px;
   }
 }
-
-.range__input {
-  width: 110px;
-  height: 45px;
-  background-color: #EFEFEF;
-  color: black;
-  border: 0;
-  padding: 15px;
-  border-radius: 8px;
-  box-sizing: border-box;
-
-  &--dark {
-    background-color: #FFF;
-  }
-
-  @media ($desktop) {
-    width: 95px;
-  }
-}
-
-.dash {
-  width: 12px;
-  height: 1px;
-  content: '';
-  margin: 15px 10px;
-  background-color: black;
-}
