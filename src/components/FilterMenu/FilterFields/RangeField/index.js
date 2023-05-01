@@ -1,1 +1,1 @@
-export { RangeField } from './RangeField';
+export { RangeField } from "./RangeField.jsx";

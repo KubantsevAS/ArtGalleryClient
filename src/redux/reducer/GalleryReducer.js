@@ -7,17 +7,17 @@ const SET_FILTERS = "SET_FILTERS";
 const initialState = {
   data: [],
   filter: {
-    name: '',
-    authorId: '',
-    locationId: '',
-    rangeStart: '',
-    rangeEnd: '',
+    name: "",
+    authorId: "",
+    locationId: "",
+    rangeStart: "",
+    rangeEnd: "",
   },
   currentPage: 1,
-}
+};
 
 function GalleryReducer(state = initialState, action) {
-  switch(action.type) {
+  switch (action.type) {
     case LOAD_GALLERY:
       return {
         ...state,
@@ -27,31 +27,40 @@ function GalleryReducer(state = initialState, action) {
       return {
         ...state,
         currentPage: action.payload,
-      }
-    case SET_FILTERS: 
+      };
+    case SET_FILTERS:
       return {
         ...state,
-        filter: {...state.filter, ...action.payload},
-      }
-    default: 
+        filter: { ...state.filter, ...action.payload },
+      };
+    default:
       return state;
   }
 }
 
 // ACTION CREATORS
-export const setCurrentPage = (page) => ({type: SET_CURRENT_PAGE, payload: page})
+export const setCurrentPage = (page) => ({
+  type: SET_CURRENT_PAGE,
+  payload: page,
+});
 
-export const setGalleryItems = (items) => ({type: LOAD_GALLERY, payload: items});
+export const setGalleryItems = (items) => ({
+  type: LOAD_GALLERY,
+  payload: items,
+});
 
-export const setFilterItems = (items) => ({type: SET_FILTERS, payload: items})
+export const setFilterItems = (items) => ({
+  type: SET_FILTERS,
+  payload: items,
+});
 
 // THUNK CREATORS
 export const requestPageItems = (obj) => {
   return async (dispatch) => {
-    let data = await getGalleryData(obj);
+    const data = await getGalleryData(obj);
     dispatch(setGalleryItems(data.data));
     dispatch(setFilterItems(data.filter));
-  }
-}
+  };
+};
 
 export default GalleryReducer;

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { Pagination } from "fwt-internship-uikit";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -13,8 +13,8 @@ export function Gallery() {
   const paintings = useSelector((store) => store.GalleryReducer.data);
   const filter = useSelector((store) => store.GalleryReducer.filter);
 
-  const locations = useSelector (store => store.ArtInfoReducer.locations);
-  const authors = useSelector (store => store.ArtInfoReducer.authors);
+  const locations = useSelector((store) => store.ArtInfoReducer.locations);
+  const authors = useSelector((store) => store.ArtInfoReducer.authors);
 
   const dispatch = useDispatch();
 
@@ -47,16 +47,16 @@ export function Gallery() {
       {paintings && (
         <div className={styles["image-container"]}>
           {paintings.map((elem) => (
-            <ArtItem 
+            <ArtItem
               key={elem.id}
               imageUrl={elem.imageUrl}
               created={elem.created}
               name={elem.name}
               author={authors.reduce((result, e) => {
-                return result === e.id ? result = e.name : result
+                return result === e.id ? (result = e.name) : result;
               }, elem.authorId)}
               location={locations.reduce((result, e) => {
-                return result === e.id ? result = e.location : result
+                return result === e.id ? (result = e.location) : result;
               }, elem.locationId)}
             />
           ))}

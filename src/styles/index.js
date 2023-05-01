@@ -1,1 +1,2 @@
-export * from './UIComponentsStyles';
+// eslint-disable-next-line import/export
+export * from "./UIComponentsStyles";

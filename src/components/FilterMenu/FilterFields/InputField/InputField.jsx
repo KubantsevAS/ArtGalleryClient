@@ -1,5 +1,6 @@
+import React from "react";
 import { Input } from "fwt-internship-uikit";
-import { cross, crossDark } from "../../../../common/Cross";
+import { cross } from "../../../../common/Cross";
 import styles from "./InputField.module.scss";
 
 export function InputField({
@@ -20,7 +21,7 @@ export function InputField({
   return (
     <div className={styles["field-wrapper"]}>
       <Input
-        value={filter.name || ''}
+        value={filter.name || ""}
         onChange={handleInputName}
         placeholder="Name"
         isDarkTheme={false}

@@ -1,1 +1,1 @@
-export { cross, crossDark } from './Cross';
+export { cross, crossDark } from "./Cross.jsx";

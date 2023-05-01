@@ -1,3 +1,3 @@
-export * from './Logo';
-export * from './ThemeIcon';
-export * from './Cross';
+export * from "./Logo";
+export * from "./ThemeIcon";
+export * from "./Cross";

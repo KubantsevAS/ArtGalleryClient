@@ -1,1 +1,1 @@
-export { ArtItem } from './ArtItem';
+export { ArtItem } from "./ArtItem.jsx";

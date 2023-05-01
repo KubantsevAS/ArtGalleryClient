@@ -1,5 +1,5 @@
 import React from "react";
-import { Logo, themeIcon, themeIconDark } from "../../common";
+import { Logo, themeIcon } from "../../common";
 import styles from "./Header.module.scss";
 
 export function Header() {

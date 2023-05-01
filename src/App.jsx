@@ -1,6 +1,7 @@
-import './App.scss';
-import './styles';
-import { FilterMenu, Gallery, Header } from './components';
+import React from "react";
+import "./App.scss";
+import "./styles";
+import { FilterMenu, Gallery, Header } from "./components";
 
 function App() {
   return (

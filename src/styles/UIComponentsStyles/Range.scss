@@ -6,7 +6,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  min-width: 280px;
+  width: 100%;
   line-height: 15px;
   height: 46px;
   border: 1px solid black;
@@ -15,18 +15,6 @@
   border-radius: 8px;
   box-sizing: border-box;
   cursor: pointer;
-
-  @media ($tablet) {
-    min-width: 160px;
-  }
-
-  @media ($smal_desktop) {
-    min-width: 220px;
-  }
-
-  @media ($desktop) {
-    min-width: 265px;
-  }
 
   &--dark {
     border: 1px solid white;
@@ -54,13 +42,15 @@
     align-items: center;
     align-self: center;
     width: inherit;
+    margin: 0;
+    width: 100%;
     top: 45px;
     border: 1px solid black;
     padding: 20px 22px;
     box-sizing: border-box;
     border-radius: 0 0 8px 8px;
     background: white;
-    z-index: 1;
+    z-index: 10;
     &--dark {
       border: 1px solid white;
       background: #464646;

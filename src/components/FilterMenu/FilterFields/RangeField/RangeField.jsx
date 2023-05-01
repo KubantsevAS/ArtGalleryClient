@@ -1,3 +1,4 @@
+import React from "react";
 import { Range } from "fwt-internship-uikit";
 import styles from "./RangeField.module.scss";
 
@@ -17,22 +18,24 @@ export function RangeField({
   };
 
   return (
-    <Range onClose={() => {}} value="Created">
-      <input
-        className={styles["range__input"]}
-        placeholder="from"
-        type={"number"}
-        value={filter.rangeStart}
-        onChange={handleInput}
-      />
-      <span className={styles["dash"]} />
-      <input
-        className={styles["range__input"]}
-        placeholder="before"
-        type={"number"}
-        value={filter.rangeEnd}
-        onChange={handleInput}
-      />
-    </Range>
+    <div className={styles["range-wrapper"]}>
+      <Range onClose={() => {}} value="Created" isDarkTheme={false}>
+        <input
+          className={styles["range__input"]}
+          placeholder="from"
+          type={"number"}
+          value={filter.rangeStart}
+          onChange={handleInput}
+        />
+        <span className={styles["dash"]} />
+        <input
+          className={styles["range__input"]}
+          placeholder="before"
+          type={"number"}
+          value={filter.rangeEnd}
+          onChange={handleInput}
+        />
+      </Range>
+    </div>
   );
 }

@@ -6,7 +6,7 @@ const store = configureStore({
   reducer: {
     GalleryReducer,
     ArtInfoReducer,
-  }
-})
+  },
+});
 
 export default store;
