@@ -43,3 +43,18 @@
   margin: 15px 10px;
   background-color: black;
 }
+
+.clear-button {
+  width: 9px;
+  height: 9px;
+  position: absolute;
+  top: 19px;
+  right: 38px;
+  z-index: 1;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}

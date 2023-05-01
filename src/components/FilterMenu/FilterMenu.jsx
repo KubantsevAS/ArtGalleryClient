@@ -11,7 +11,6 @@ import { InputField, RangeField, SelectField } from "./FilterFields";
 export function FilterMenu() {
   const locations = useSelector((store) => store.ArtInfoReducer.locations);
   const authors = useSelector((store) => store.ArtInfoReducer.authors);
-  const filter = useSelector((store) => store.GalleryReducer.filter);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -24,7 +23,6 @@ export function FilterMenu() {
         dispatch={dispatch}
         setFilterItems={setFilterItems}
         setCurrentPage={setCurrentPage}
-        filter={filter}
         isDarkTheme={false}
       />
 
@@ -33,7 +31,6 @@ export function FilterMenu() {
         dispatch={dispatch}
         setFilterItems={setFilterItems}
         setCurrentPage={setCurrentPage}
-        filter={filter}
         isDarkTheme={false}
         placeholder={"Author"}
       />
@@ -46,7 +43,6 @@ export function FilterMenu() {
         dispatch={dispatch}
         setFilterItems={setFilterItems}
         setCurrentPage={setCurrentPage}
-        filter={filter}
         isDarkTheme={false}
         placeholder={"Location"}
       />
@@ -55,7 +51,6 @@ export function FilterMenu() {
         dispatch={dispatch}
         setFilterItems={setFilterItems}
         setCurrentPage={setCurrentPage}
-        filter={filter}
         isDarkTheme={false}
       />
     </div>

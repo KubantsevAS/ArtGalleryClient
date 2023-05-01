@@ -8,7 +8,6 @@ export function SelectField({
   setCurrentPage,
   setFilterItems,
   dispatch,
-  filter,
   placeholder,
 }) {
   const [currentValue, setCurrentValue] = useState("");
@@ -20,9 +19,9 @@ export function SelectField({
       e
     );
     if (options[0]?.location) {
-      dispatch(setFilterItems({ ...filter, locationId: newId }));
+      dispatch(setFilterItems({ locationId: newId }));
     } else {
-      dispatch(setFilterItems({ ...filter, authorId: newId }));
+      dispatch(setFilterItems({ authorId: newId }));
     }
     dispatch(setCurrentPage(1));
   };
@@ -30,9 +29,9 @@ export function SelectField({
   const clearValue = () => {
     setCurrentValue("");
     if (options[0]?.location) {
-      dispatch(setFilterItems({ ...filter, locationId: "" }));
+      dispatch(setFilterItems({ locationId: "" }));
     } else {
-      dispatch(setFilterItems({ ...filter, authorId: "" }));
+      dispatch(setFilterItems({ authorId: "" }));
     }
   };
 

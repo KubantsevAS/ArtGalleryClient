@@ -40,7 +40,7 @@ export function Gallery() {
   ]);
 
   // console.log(paintings)
-  // console.log(locations)
+  console.log(filter);
 
   return (
     <div>

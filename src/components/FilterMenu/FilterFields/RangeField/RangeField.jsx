@@ -1,20 +1,39 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
+import debounce from "lodash.debounce";
 import { Range } from "fwt-internship-uikit";
+import { cross } from "../../../../common/Cross";
 import styles from "./RangeField.module.scss";
 
-export function RangeField({
-  setCurrentPage,
-  setFilterItems,
-  dispatch,
-  filter,
-}) {
+export function RangeField({ setCurrentPage, setFilterItems, dispatch }) {
+  const [from, setFrom] = useState("");
+  const [before, setBefore] = useState("");
+
+  const updateDateValue = useCallback(
+    debounce((str, dest) => {
+      if (dest === "from") {
+        dispatch(setFilterItems({ rangeStart: str }));
+      } else {
+        dispatch(setFilterItems({ rangeEnd: str }));
+      }
+    }, 400),
+    []
+  );
+
   const handleInput = (e) => {
     if (e.target.placeholder === "from") {
-      dispatch(setFilterItems({ ...filter, rangeStart: e.target.value }));
+      setFrom(e.target.value);
+      updateDateValue(e.target.value, "from");
     } else {
-      dispatch(setFilterItems({ ...filter, rangeEnd: e.target.value }));
+      setBefore(e.target.value);
+      updateDateValue(e.target.value, "before");
     }
     dispatch(setCurrentPage(1));
+  };
+
+  const clearValue = () => {
+    setFrom("");
+    setBefore("");
+    dispatch(setFilterItems({ rangeStart: "", rangeEnd: "" }));
   };
 
   return (
@@ -24,7 +43,7 @@ export function RangeField({
           className={styles["range__input"]}
           placeholder="from"
           type={"number"}
-          value={filter.rangeStart}
+          value={from}
           onChange={handleInput}
         />
         <span className={styles["dash"]} />
@@ -32,10 +51,15 @@ export function RangeField({
           className={styles["range__input"]}
           placeholder="before"
           type={"number"}
-          value={filter.rangeEnd}
+          value={before}
           onChange={handleInput}
         />
       </Range>
+      {(from || before) && (
+        <button onClick={clearValue} className={styles["clear-button"]}>
+          {cross}
+        </button>
+      )}
     </div>
   );
 }
