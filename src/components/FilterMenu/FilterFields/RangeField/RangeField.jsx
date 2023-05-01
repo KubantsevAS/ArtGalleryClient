@@ -1,10 +1,15 @@
 import React, { useCallback, useState } from "react";
 import debounce from "lodash.debounce";
 import { Range } from "fwt-internship-uikit";
-import { cross } from "../../../../common/Cross";
+import { cross, crossDark } from "../../../../common/Cross";
 import styles from "./RangeField.module.scss";
 
-export function RangeField({ setCurrentPage, setFilterItems, dispatch }) {
+export function RangeField({
+  setCurrentPage,
+  setFilterItems,
+  dispatch,
+  isDarkTheme,
+}) {
   const [from, setFrom] = useState("");
   const [before, setBefore] = useState("");
 
@@ -38,7 +43,7 @@ export function RangeField({ setCurrentPage, setFilterItems, dispatch }) {
 
   return (
     <div className={styles["range-wrapper"]}>
-      <Range onClose={() => {}} value="Created" isDarkTheme={false}>
+      <Range onClose={() => {}} value="Created" isDarkTheme={isDarkTheme}>
         <input
           className={styles["range__input"]}
           placeholder="from"
@@ -57,7 +62,7 @@ export function RangeField({ setCurrentPage, setFilterItems, dispatch }) {
       </Range>
       {(from || before) && (
         <button onClick={clearValue} className={styles["clear-button"]}>
-          {cross}
+          {isDarkTheme ? crossDark : cross}
         </button>
       )}
     </div>

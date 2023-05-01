@@ -8,7 +8,7 @@ import {
 import { ArtItem } from "./ArtItem";
 import styles from "./Gallery.module.scss";
 
-export function Gallery() {
+export function Gallery({ darkTheme }) {
   const currentPage = useSelector((store) => store.GalleryReducer.currentPage);
   const paintings = useSelector((store) => store.GalleryReducer.data);
   const filter = useSelector((store) => store.GalleryReducer.filter);
@@ -39,9 +39,6 @@ export function Gallery() {
     dispatch,
   ]);
 
-  // console.log(paintings)
-  console.log(filter);
-
   return (
     <div>
       {paintings && (
@@ -66,7 +63,7 @@ export function Gallery() {
       <Pagination
         currentPage={currentPage}
         pagesAmount={5}
-        isDarkTheme={false}
+        isDarkTheme={darkTheme}
         onChange={(e) => dispatch(setCurrentPage(e))}
       />
     </div>

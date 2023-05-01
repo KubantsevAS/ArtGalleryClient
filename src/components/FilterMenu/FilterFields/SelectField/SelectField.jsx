@@ -1,6 +1,6 @@
 import { Select } from "fwt-internship-uikit";
 import React, { useState } from "react";
-import { cross } from "../../../../common/Cross";
+import { cross, crossDark } from "../../../../common/Cross";
 import styles from "./SelectField.module.scss";
 
 export function SelectField({
@@ -9,6 +9,7 @@ export function SelectField({
   setFilterItems,
   dispatch,
   placeholder,
+  isDarkTheme,
 }) {
   const [currentValue, setCurrentValue] = useState("");
 
@@ -41,11 +42,11 @@ export function SelectField({
         options={options}
         value={currentValue || placeholder}
         onChange={handleChange}
-        isDarkTheme={false}
+        isDarkTheme={isDarkTheme}
       />
       {currentValue && (
         <button onClick={clearValue} className={styles["clear-button"]}>
-          {cross}
+          {isDarkTheme ? crossDark : cross}
         </button>
       )}
     </div>

@@ -1,10 +1,15 @@
 import React, { useCallback, useState } from "react";
 import debounce from "lodash.debounce";
 import { Input } from "fwt-internship-uikit";
-import { cross } from "../../../../common/Cross";
+import { cross, crossDark } from "../../../../common/Cross";
 import styles from "./InputField.module.scss";
 
-export function InputField({ setCurrentPage, setFilterItems, dispatch }) {
+export function InputField({
+  setCurrentPage,
+  setFilterItems,
+  dispatch,
+  isDarkTheme,
+}) {
   const [fieldValue, setFieldValue] = useState("");
 
   const updateInputValue = useCallback(
@@ -31,11 +36,11 @@ export function InputField({ setCurrentPage, setFilterItems, dispatch }) {
         value={fieldValue || ""}
         onChange={handleInputName}
         placeholder="Name"
-        isDarkTheme={false}
+        isDarkTheme={isDarkTheme}
       />
       {fieldValue && (
         <button onClick={clearValue} className={styles["clear-button"]}>
-          {cross}
+          {isDarkTheme ? crossDark : cross}
         </button>
       )}
     </div>

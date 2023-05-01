@@ -1,14 +1,17 @@
-import React from "react";
-import "./App.scss";
+import React, { useState } from "react";
+import styles from "./App.module.scss";
 import "./styles";
 import { FilterMenu, Gallery, Header } from "./components";
 
 function App() {
+  const [darkTheme, setDarkTheme] = useState(true);
+
+  console.log(darkTheme);
   return (
-    <div className="App">
-      <Header />
-      <FilterMenu />
-      <Gallery />
+    <div className={styles["App"] + " " + (darkTheme && styles["App--dark"])}>
+      <Header setDarkTheme={setDarkTheme} darkTheme={darkTheme} />
+      <FilterMenu darkTheme={darkTheme} />
+      <Gallery darkTheme={darkTheme} />
     </div>
   );
 }

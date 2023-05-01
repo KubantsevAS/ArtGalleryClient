@@ -54,7 +54,7 @@ export const setFilterItems = (items) => ({
   payload: items,
 });
 
-// THUNK CREATORS
+// THUNK CREATOR
 export const requestPageItems = (obj) => {
   return async (dispatch) => {
     const data = await getGalleryData(obj);

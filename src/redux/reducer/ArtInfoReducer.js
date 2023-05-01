@@ -24,6 +24,7 @@ export const setArtInfo = (infoData) => ({
   payload: infoData,
 });
 
+// THUNK CREATOR
 export const requestArtInfo = () => {
   return async (dispatch) => {
     const data = await getArtInfo();

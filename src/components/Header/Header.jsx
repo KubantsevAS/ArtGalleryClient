@@ -1,12 +1,18 @@
 import React from "react";
-import { Logo, themeIcon } from "../../common";
+import { Logo, sunIcon, sunIconDark } from "../../common";
 import styles from "./Header.module.scss";
 
-export function Header() {
+export function Header({ setDarkTheme, darkTheme }) {
+  const switchTheme = () => {
+    darkTheme ? setDarkTheme(false) : setDarkTheme(true);
+  };
+
   return (
     <div className={styles["header"]}>
       <Logo />
-      {themeIcon}
+      <button onClick={switchTheme} className={styles["theme-button"]}>
+        {!darkTheme ? sunIcon : sunIconDark}
+      </button>
     </div>
   );
 }

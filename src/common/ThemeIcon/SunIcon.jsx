@@ -1,6 +1,6 @@
 import React from "react";
 
-export const themeIcon = (
+export const sunIcon = (
   <svg
     width="20"
     height="20"
@@ -15,7 +15,7 @@ export const themeIcon = (
   </svg>
 );
 
-export const themeIconDark = (
+export const sunIconDark = (
   <svg
     width="20"
     height="20"

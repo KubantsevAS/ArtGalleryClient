@@ -1,1 +1,1 @@
-export { themeIcon, themeIconDark } from "./ThemeIcon.jsx";
+export { sunIcon, sunIconDark } from "./SunIcon.jsx";

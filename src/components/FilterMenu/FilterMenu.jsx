@@ -8,7 +8,7 @@ import {
 } from "../../redux/reducer/GalleryReducer";
 import { InputField, RangeField, SelectField } from "./FilterFields";
 
-export function FilterMenu() {
+export function FilterMenu({ darkTheme }) {
   const locations = useSelector((store) => store.ArtInfoReducer.locations);
   const authors = useSelector((store) => store.ArtInfoReducer.authors);
   const dispatch = useDispatch();
@@ -23,7 +23,7 @@ export function FilterMenu() {
         dispatch={dispatch}
         setFilterItems={setFilterItems}
         setCurrentPage={setCurrentPage}
-        isDarkTheme={false}
+        isDarkTheme={darkTheme}
       />
 
       <SelectField
@@ -31,7 +31,7 @@ export function FilterMenu() {
         dispatch={dispatch}
         setFilterItems={setFilterItems}
         setCurrentPage={setCurrentPage}
-        isDarkTheme={false}
+        isDarkTheme={darkTheme}
         placeholder={"Author"}
       />
 
@@ -43,7 +43,7 @@ export function FilterMenu() {
         dispatch={dispatch}
         setFilterItems={setFilterItems}
         setCurrentPage={setCurrentPage}
-        isDarkTheme={false}
+        isDarkTheme={darkTheme}
         placeholder={"Location"}
       />
 
@@ -51,7 +51,7 @@ export function FilterMenu() {
         dispatch={dispatch}
         setFilterItems={setFilterItems}
         setCurrentPage={setCurrentPage}
-        isDarkTheme={false}
+        isDarkTheme={darkTheme}
       />
     </div>
   );
