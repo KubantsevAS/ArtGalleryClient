@@ -1,12 +1,10 @@
-@import '/src/styles/variables.scss';
-
 .Select {
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  min-width: 280px;
+  width: 100%;
   height: 46px;
   border-radius: 8px;
   box-shadow: 0px 0px 0px 1px black;
@@ -14,18 +12,6 @@
   box-sizing: border-box;
   background: white;
   cursor: pointer;
-
-  @media ($tablet) {
-    min-width: 160px;
-  }
-
-  @media ($smal_desktop) {
-    min-width: 220px;
-  }
-
-  @media ($desktop) {
-    min-width: 265px;
-  }
 
   &--open {
     border-radius: 8px 8px 0 0;
@@ -36,10 +22,10 @@
     background: #464646;
   }
   &__title {
-    width: auto;
+    width: 60%;
     text-align: left;
     word-break: break-all;
-    margin: 0 56px 0 15px;
+    margin: 0 0 0 15px;
     overflow: hidden;
     text-overflow: ellipsis;
     line-clamp: 3;
