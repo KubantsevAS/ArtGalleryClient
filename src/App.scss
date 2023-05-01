@@ -2,19 +2,19 @@
 
 .App {
   text-align: center;
-  // padding: 35px 123px 97px;
+  padding: 35px 123px 97px;
   background-color: $color_white;
   font-family: 'Roboto', sans-serif;
 
-  // @media ($smal_desktop) {
-  //   padding: 35px 42px 62px;
-  // }
+  @media ($smal_desktop) {
+    padding: 35px 42px 62px;
+  }
 
-  // @media ($tablet) {
-  //   padding: 35px 34px 54px;
-  // }
+  @media ($tablet) {
+    padding: 35px 34px 54px;
+  }
 
-  // @media ($mobile) {
-  //   padding: 25px 20px 34px;
-  // }
+  @media ($mobile) {
+    padding: 25px 20px 34px;
+  }
 }

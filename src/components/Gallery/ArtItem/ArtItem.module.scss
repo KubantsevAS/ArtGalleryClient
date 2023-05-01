@@ -1,7 +1,7 @@
 @import '/src/styles/variables.scss';
 
 .image-container {
-  width: 280px;
+  min-width: 280px;
   height: 205px;
   position: relative;
   overflow: hidden;
@@ -12,17 +12,17 @@
   }
 
   @media ($tablet) {
-    width: 340px;
+    min-width: 340px;
     height: 249px;
   }
 
   @media ($smal_desktop) {
-    width: 300px;
+    min-width: 300px;
     height: 230px;
   }
 
   @media ($desktop) {
-    width: 360px;
+    min-width: 360px;
     height: 275px;
   }
 }
