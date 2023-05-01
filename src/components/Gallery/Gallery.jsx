@@ -13,6 +13,9 @@ export function Gallery() {
   const paintings = useSelector((store) => store.GalleryReducer.data);
   const filter = useSelector((store) => store.GalleryReducer.filter);
 
+  const locations = useSelector (store => store.ArtInfoReducer.locations);
+  const authors = useSelector (store => store.ArtInfoReducer.authors);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -36,14 +39,26 @@ export function Gallery() {
     dispatch,
   ]);
 
-  console.log(filter);
-  // console.log(paintings);
+  // console.log(paintings)
+  // console.log(locations)
+
   return (
     <div>
       {paintings && (
         <div className={styles["image-container"]}>
           {paintings.map((elem) => (
-            <ArtItem key={elem.id} {...elem} />
+            <ArtItem 
+              key={elem.id}
+              imageUrl={elem.imageUrl}
+              created={elem.created}
+              name={elem.name}
+              author={authors.reduce((result, e) => {
+                return result === e.id ? result = e.name : result
+              }, elem.authorId)}
+              location={locations.reduce((result, e) => {
+                return result === e.id ? result = e.location : result
+              }, elem.locationId)}
+            />
           ))}
         </div>
       )}

@@ -31,7 +31,6 @@ export const getGalleryData = async ({currentPage = 1, name, authorId, locationI
       + (rangeStart ? '&created_gte=' + rangeStart : '')
       + (rangeEnd ? '&created_lte=' + rangeEnd :  ''))
     .then(response => {
-      console.log(response)
       return {
         data: response.data,
         filter: {name, authorId, locationId, rangeStart, rangeEnd},

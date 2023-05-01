@@ -1,12 +1,12 @@
-import React from 'react';
-import { Logo, ThemeIcon } from '../../common';
-import styles from './Header.module.scss';
+import React from "react";
+import { Logo, themeIcon, themeIconDark } from "../../common";
+import styles from "./Header.module.scss";
 
 export function Header() {
   return (
-    <div className={styles['header']}>
+    <div className={styles["header"]}>
       <Logo />
-      <ThemeIcon />
+      {themeIcon}
     </div>
-  )
+  );
 }
