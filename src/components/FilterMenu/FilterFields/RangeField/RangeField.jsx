@@ -45,7 +45,11 @@ export function RangeField({
     <div className={styles["range-wrapper"]}>
       <Range onClose={() => {}} value="Created" isDarkTheme={isDarkTheme}>
         <input
-          className={styles["range__input"]}
+          className={
+            styles["range__input"] +
+            " " +
+            (isDarkTheme && styles["range__input--dark"])
+          }
           placeholder="from"
           type={"number"}
           value={from}
@@ -53,7 +57,11 @@ export function RangeField({
         />
         <span className={styles["dash"]} />
         <input
-          className={styles["range__input"]}
+          className={
+            styles["range__input"] +
+            " " +
+            (isDarkTheme && styles["range__input--dark"])
+          }
           placeholder="before"
           type={"number"}
           value={before}

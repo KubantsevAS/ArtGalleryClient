@@ -4,7 +4,7 @@ import "./styles";
 import { FilterMenu, Gallery, Header } from "./components";
 
 function App() {
-  const [darkTheme, setDarkTheme] = useState(true);
+  const [darkTheme, setDarkTheme] = useState(false);
 
   console.log(darkTheme);
   return (

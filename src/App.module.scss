@@ -5,6 +5,7 @@
   padding: 25px 20px 34px;
   background-color: $color_white;
   font-family: 'Roboto', sans-serif;
+  min-height: 100vh;
 
   @media ($tablet) {
     padding: 35px 34px 54px;

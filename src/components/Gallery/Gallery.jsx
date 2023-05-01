@@ -39,8 +39,21 @@ export function Gallery({ darkTheme }) {
     dispatch,
   ]);
 
+  console.log(paintings);
   return (
     <div>
+      {!paintings.length && (
+        <h1
+          className={
+            styles["error-message"] +
+            " " +
+            (darkTheme && styles["error-message--dark"])
+          }
+        >
+          Nothing was found
+        </h1>
+      )}
+
       {paintings && (
         <div className={styles["image-container"]}>
           {paintings.map((elem) => (
@@ -61,6 +74,7 @@ export function Gallery({ darkTheme }) {
       )}
 
       <Pagination
+        className={styles["pagination"]}
         currentPage={currentPage}
         pagesAmount={5}
         isDarkTheme={darkTheme}
