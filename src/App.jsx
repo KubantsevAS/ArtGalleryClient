@@ -6,7 +6,6 @@ import { FilterMenu, Gallery, Header } from "./components";
 function App() {
   const [darkTheme, setDarkTheme] = useState(false);
 
-  console.log(darkTheme);
   return (
     <div className={styles["App"] + " " + (darkTheme && styles["App--dark"])}>
       <Header setDarkTheme={setDarkTheme} darkTheme={darkTheme} />

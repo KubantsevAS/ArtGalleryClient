@@ -39,7 +39,6 @@ export function Gallery({ darkTheme }) {
     dispatch,
   ]);
 
-  console.log(paintings);
   return (
     <div>
       {!paintings.length && (
