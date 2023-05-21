@@ -27,17 +27,17 @@ export const getGalleryData = async ({
   rangeEnd,
 }) => {
   const request = await axios
-    .get(
-      BASE_URL +
-        "_page=" +
-        currentPage +
-        "&_limit=12" +
-        (name ? "&q=" + name : "") +
-        (authorId ? "&authorId=" + authorId : "") +
-        (locationId ? "&locationId=" + locationId : "") +
-        (rangeStart ? "&created_gte=" + rangeStart : "") +
-        (rangeEnd ? "&created_lte=" + rangeEnd : "")
-    )
+    .get(BASE_URL, {
+      params: {
+        _page: currentPage,
+        _limit: 12,
+        q: name || undefined,
+        authorId: authorId || undefined,
+        locationId: locationId || undefined,
+        created_gte: rangeStart || undefined,
+        created_lte: rangeEnd || undefined,
+      },
+    })
     .then((response) => {
       return {
         data: response.data,
