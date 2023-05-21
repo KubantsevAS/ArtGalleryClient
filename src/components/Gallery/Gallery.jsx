@@ -12,6 +12,7 @@ export function Gallery({ darkTheme }) {
   const currentPage = useSelector((store) => store.GalleryReducer.currentPage);
   const paintings = useSelector((store) => store.GalleryReducer.data);
   const filter = useSelector((store) => store.GalleryReducer.filter);
+  const isFetching = useSelector((store) => store.GalleryReducer.isFetching);
 
   const locations = useSelector((store) => store.ArtInfoReducer.locations);
   const authors = useSelector((store) => store.ArtInfoReducer.authors);
@@ -41,7 +42,18 @@ export function Gallery({ darkTheme }) {
 
   return (
     <div>
-      {!paintings.length && (
+      {isFetching && (
+        <h1
+          className={
+            styles["error-message"] +
+            " " +
+            (darkTheme && styles["error-message--dark"])
+          }
+        >
+          Loading...
+        </h1>
+      )}
+      {!paintings.length && !isFetching && (
         <h1
           className={
             styles["error-message"] +
