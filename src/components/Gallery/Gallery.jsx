@@ -7,6 +7,7 @@ import {
 } from "../../redux/reducer/GalleryReducer";
 import { ArtItem } from "./ArtItem";
 import styles from "./Gallery.module.scss";
+import classNames from "classnames";
 
 export function Gallery({ darkTheme }) {
   const currentPage = useSelector((store) => store.GalleryReducer.currentPage);
@@ -44,22 +45,20 @@ export function Gallery({ darkTheme }) {
     <div>
       {isFetching && (
         <h1
-          className={
-            styles["error-message"] +
-            " " +
-            (darkTheme && styles["error-message--dark"])
-          }
+          className={classNames(
+            styles["error-message"],
+            darkTheme && styles["error-message--dark"]
+          )}
         >
           Loading...
         </h1>
       )}
       {!paintings.length && !isFetching && (
         <h1
-          className={
-            styles["error-message"] +
-            " " +
-            (darkTheme && styles["error-message--dark"])
-          }
+          className={classNames(
+            styles["error-message"],
+            darkTheme && styles["error-message--dark"]
+          )}
         >
           Nothing was found
         </h1>

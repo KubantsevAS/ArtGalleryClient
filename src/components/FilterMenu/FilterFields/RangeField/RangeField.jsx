@@ -3,13 +3,11 @@ import debounce from "lodash.debounce";
 import { Range } from "fwt-internship-uikit";
 import { cross, crossDark } from "../../../../common/Cross";
 import styles from "./RangeField.module.scss";
+import { useDispatch } from "react-redux";
+import classNames from "classnames";
 
-export function RangeField({
-  setCurrentPage,
-  setFilterItems,
-  dispatch,
-  isDarkTheme,
-}) {
+export function RangeField({ setCurrentPage, setFilterItems, isDarkTheme }) {
+  const dispatch = useDispatch();
   const [from, setFrom] = useState("");
   const [before, setBefore] = useState("");
 
@@ -45,11 +43,10 @@ export function RangeField({
     <div className={styles["range-wrapper"]}>
       <Range onClose={() => {}} value="Created" isDarkTheme={isDarkTheme}>
         <input
-          className={
-            styles["range__input"] +
-            " " +
-            (isDarkTheme && styles["range__input--dark"])
-          }
+          className={classNames(
+            styles["range__input"],
+            isDarkTheme && styles["range__input--dark"]
+          )}
           placeholder="from"
           type={"number"}
           value={from}
@@ -57,11 +54,10 @@ export function RangeField({
         />
         <span className={styles["dash"]} />
         <input
-          className={
-            styles["range__input"] +
-            " " +
-            (isDarkTheme && styles["range__input--dark"])
-          }
+          className={classNames(
+            styles["range__input"],
+            isDarkTheme && styles["range__input--dark"]
+          )}
           placeholder="before"
           type={"number"}
           value={before}

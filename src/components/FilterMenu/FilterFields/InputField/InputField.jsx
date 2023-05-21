@@ -3,13 +3,10 @@ import debounce from "lodash.debounce";
 import { Input } from "fwt-internship-uikit";
 import { cross, crossDark } from "../../../../common/Cross";
 import styles from "./InputField.module.scss";
+import { useDispatch } from "react-redux";
 
-export function InputField({
-  setCurrentPage,
-  setFilterItems,
-  dispatch,
-  isDarkTheme,
-}) {
+export function InputField({ setCurrentPage, setFilterItems, isDarkTheme }) {
+  const dispatch = useDispatch();
   const [fieldValue, setFieldValue] = useState("");
 
   const updateInputValue = useCallback(

@@ -2,15 +2,16 @@ import { Select } from "fwt-internship-uikit";
 import React, { useState } from "react";
 import { cross, crossDark } from "../../../../common/Cross";
 import styles from "./SelectField.module.scss";
+import { useDispatch } from "react-redux";
 
 export function SelectField({
   options,
   setCurrentPage,
   setFilterItems,
-  dispatch,
   placeholder,
   isDarkTheme,
 }) {
+  const dispatch = useDispatch();
   const [currentValue, setCurrentValue] = useState("");
 
   const handleChange = (e) => {

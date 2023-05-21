@@ -1,16 +1,16 @@
 import axios from "axios";
 
-const BASE_URL = "https://test-front.framework.team/paintings/?";
-const AUTHORS_URL = "https://test-front.framework.team/authors/";
-const LOCATIONS_URL = "https://test-front.framework.team/locations/";
+const instance = axios.create({
+  baseURL: "https://test-front.framework.team/",
+});
 
 export const getArtInfo = async () => {
-  const authors = await axios.get(AUTHORS_URL).then((response) => {
+  const authors = await instance.get("authors").then((response) => {
     return {
       data: response.data,
     };
   });
-  const locations = await axios.get(LOCATIONS_URL).then((response) => {
+  const locations = await instance.get("locations").then((response) => {
     return {
       data: response.data,
     };
@@ -26,8 +26,8 @@ export const getGalleryData = async ({
   rangeStart,
   rangeEnd,
 }) => {
-  const request = await axios
-    .get(BASE_URL, {
+  const request = await instance
+    .get("paintings", {
       params: {
         _page: currentPage,
         _limit: 12,

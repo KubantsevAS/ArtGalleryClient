@@ -20,7 +20,6 @@ export function FilterMenu({ darkTheme }) {
   return (
     <div className={styles["menu"]}>
       <InputField
-        dispatch={dispatch}
         setFilterItems={setFilterItems}
         setCurrentPage={setCurrentPage}
         isDarkTheme={darkTheme}
@@ -28,7 +27,6 @@ export function FilterMenu({ darkTheme }) {
 
       <SelectField
         options={authors}
-        dispatch={dispatch}
         setFilterItems={setFilterItems}
         setCurrentPage={setCurrentPage}
         isDarkTheme={darkTheme}
@@ -40,7 +38,6 @@ export function FilterMenu({ darkTheme }) {
           ...item,
           name: item.location,
         }))}
-        dispatch={dispatch}
         setFilterItems={setFilterItems}
         setCurrentPage={setCurrentPage}
         isDarkTheme={darkTheme}
@@ -48,7 +45,6 @@ export function FilterMenu({ darkTheme }) {
       />
 
       <RangeField
-        dispatch={dispatch}
         setFilterItems={setFilterItems}
         setCurrentPage={setCurrentPage}
         isDarkTheme={darkTheme}
